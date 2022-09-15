@@ -28,5 +28,34 @@ export default{
   background-color: #222;
   padding: 20px 40px;
  }
+
+ @media screen and (max-width: 1200px) {
+  #main-banner{
+    background-repeat: no-repeat;
+    background-position: 10%;
+  }
+ }
+
+ @media screen and (max-width: 900px) {
+  #main-banner{
+    background-repeat: no-repeat;
+    background-position: 10%;
+  }
+
+  #main-banner h1 {
+    background: rgba(0,0,0,.5);
+   }
+ }
+
+ @media screen and (max-width: 500px) {
+  #main-banner{
+    background-position: 90%;
+    background-repeat: no-repeat;
+   }
+
+   #main-banner h1 {
+    background: rgba(0,0,0,.5);
+   }
+ }
  
 </style>
