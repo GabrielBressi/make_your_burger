@@ -21,8 +21,18 @@
             <option value="maminha">maminha</option>
           </select>
         </div>
-        <div class="opcionais-container">
-          <label for="carne">Selecione os opcionais:</label>
+        <div class="input-container" id="opcionais-container">
+
+          <label id="opcionais-title" for="opcionais">Selecione os opcionais:</label>
+
+          <div class="checkbox-container">
+            <input type="checkbox" name="opcionais" id="opcionais" v-model="opcionais" value="salame">
+            <span>Salame</span>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" name="opcionais" id="opcionais" v-model="opcionais" value="salame">
+            <span>Salame</span>
+          </div>
           <div class="checkbox-container">
             <input type="checkbox" name="opcionais" id="opcionais" v-model="opcionais" value="salame">
             <span>Salame</span>
@@ -71,4 +81,46 @@ export default{
     flex-direction: row;
     flex-wrap: wrap;
   }
+
+  #opcionais-title {
+    width: 100%;
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    width: 50%;
+    margin-bottom: 20px;
+  }
+
+  .checkbox-container span,
+  .checkbox-container input{
+    width: auto;
+  }
+
+  .checkbox-container span {
+    margin-left: 6px;
+    font-weight: bold;
+  }
+
+  .submit-btn {
+    background-color: #222;
+    color: #FCBA03;
+    font-weight: bold;
+    border: 2px solid #222;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: .5s;
+  }
+
+  .submit-btn:hover {
+    background-color: #FCBA03;
+    border: 2px solid #FCBA03;
+
+    color: #222;
+  }
+
 </style>
