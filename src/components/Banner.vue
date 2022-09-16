@@ -29,6 +29,15 @@ export default{
   padding: 20px 40px;
  }
 
+ @media screen and (max-width: 2100px) {
+  #main-banner{
+    background-repeat: no-repeat;
+    background-position: 100%;
+   
+  }
+ }
+
+
  @media screen and (max-width: 1200px) {
   #main-banner{
     background-repeat: no-repeat;
