@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p>Component de Mensagem</p>
+    <Message :msg="msg" v-show="msg"/>
     <div>
-      <form id="burger-form">
+      <form id="burger-form" @submit.prevent="createBurger">
         <div class="input-container">
           <label for="name">Nome do Cliente:</label>
           <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite o seu nome">
@@ -36,7 +36,11 @@
   </div>
 </template>
 
+
 <script>
+
+import Message from "./Message.vue"
+
 export default{
   name:"BurgerForm",
   data() {
@@ -48,7 +52,6 @@ export default{
       pao: null,
       carne: null,
       opcionais: [],
-      status: "Solicitado",
       msg: null,
     }
   },
@@ -60,10 +63,42 @@ export default{
       this.paes = data.paes;
       this.carnes = data.carnes;
       this.opcionaisdata = data.opcionais;
-    }
+    },
+    async createBurger(e){
+      e.preventDefault();
+
+      const data = {
+        nome: this.nome,
+        carne: this.carne,
+        pao: this.pao,
+        opcionais: Array.from(this.opcionais),
+        status: "Solicitado"
+      }
+      
+      const dataJson = JSON.stringify(data);
+
+      const req = await fetch("http://localhost:3000/burgers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: dataJson
+      });
+
+      const res = await req.json();
+
+      // colocar msg
+      this.msg = `Pedido Nº${res.id} realizado com sucesso!`
+      // limpar msg
+      setTimeout(() => this.msg = "", 3000)
+      // limpar os campos
+
+
+    },
   },
   mounted() {
     this.getIngredientes()
+  },
+  components: {
+    Message
   }
 
 }
