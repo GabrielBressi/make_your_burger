@@ -90,6 +90,10 @@ export default{
       // limpar msg
       setTimeout(() => this.msg = "", 3000)
       // limpar os campos
+      this.nome = "";
+      this.carne = "";
+      this.pao = "";
+      this.opcionais = "";
 
 
     },
